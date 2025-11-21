@@ -1,6 +1,7 @@
 package openapi
 
 import (
+	"log"
 	"net/http"
 	"time"
 )
@@ -16,6 +17,7 @@ func (t *transport) RoundTrip(req *http.Request) (*http.Response, error) {
 	if err := t.sig.Sign(time.Now(), request{req}); err != nil {
 		return nil, err
 	}
+	log.Printf("full url: %s \n", req.URL.String())
 	return t.rt.RoundTrip(req)
 }
 
