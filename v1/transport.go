@@ -18,6 +18,7 @@ func (t *transport) RoundTrip(req *http.Request) (*http.Response, error) {
 		return nil, err
 	}
 	log.Printf("full url: %s \n", req.URL.String())
+	println("full url: %s \n", req.URL.String())
 	return t.rt.RoundTrip(req)
 }
 
