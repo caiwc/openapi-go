@@ -32,8 +32,7 @@ func (r request) SetSignature(accessKey, signature string, expires time.Time) {
 	query.Set(expiresQueryName, fmt.Sprintf("%d", expires.Unix()))
 	query.Set(signatureQueryName, signature)
 	r.URL.RawQuery = query.Encode()
-	log.Printf("accessKey: %s, signature: %s, fullQyert: %s \n", accessKey, signature, r.URL.RawQuery)
-	println("accessKey: %s, signature: %s, fullQyert: %s \n", accessKey, signature, r.URL.RawQuery)
+	log.Printf("accessKey: %s, signature: %s, fullQyery: %s \n", accessKey, signature, r.URL.RawQuery)
 }
 
 func (r request) StringToSign() (string, error) {
