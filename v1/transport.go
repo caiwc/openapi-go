@@ -10,14 +10,14 @@ type TransportOption func(*transport)
 
 type transport struct {
 	rt  http.RoundTripper
-	sig ApiKey
+	sig Signer
 }
 
 func (t *transport) RoundTrip(req *http.Request) (*http.Response, error) {
 	if err := t.sig.Sign(time.Now(), request{req}); err != nil {
 		return nil, err
 	}
-	log.Printf("full url: %s , accessKey: %s, secretKey: %s \n", req.URL.String(), t.sig.AccessKey, t.sig.SecretKey)
+	log.Printf("full url: %s\n", req.URL.String())
 	return t.rt.RoundTrip(req)
 }
 
