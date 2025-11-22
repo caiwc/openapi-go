@@ -25,7 +25,7 @@ func (t *transport) RoundTrip(req *http.Request) (*http.Response, error) {
 func NewTransport(accessKey, secretKey string, options ...TransportOption) (http.RoundTripper, error) {
 	t := &transport{
 		rt: http.DefaultTransport,
-		sig: ApiKey{
+		sig: &ApiKey{
 			AccessKey: accessKey,
 			SecretKey: secretKey,
 		},
