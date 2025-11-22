@@ -20,7 +20,7 @@ func (t *transport) RoundTrip(req *http.Request) (*http.Response, error) {
 	}
 	log.Printf("full url: %s, sig: %s\n", req.URL.String(), t.sig.String())
 	resp, err := t.rt.RoundTrip(req)
-	log.Printf("second sig info: %s\n", t.sig.String())
+	log.Printf("after request sig info: %s\n", t.sig.String())
 	return resp, err
 }
 
