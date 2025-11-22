@@ -10,10 +10,15 @@ import (
 
 type Signer interface {
 	Sign(expires time.Time, request Request) error
+	String() string
 }
 
 type ApiKey struct {
 	AccessKey, SecretKey string
+}
+
+func (a ApiKey) String() string {
+	return fmt.Sprintf("ApiKey{AccessKey: %s, SecretKey: %s}", a.AccessKey, a.SecretKey)
 }
 
 func (a ApiKey) Sign(expires time.Time, r Request) error {
