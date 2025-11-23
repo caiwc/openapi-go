@@ -10,7 +10,7 @@ type TransportOption func(*transport)
 
 type transport struct {
 	rt  http.RoundTripper
-	sig Signer
+	sig ApiKey // 直接存储结构体值，避免接口值拷贝问题
 }
 
 func (t *transport) RoundTrip(req *http.Request) (*http.Response, error) {
@@ -25,7 +25,7 @@ func (t *transport) RoundTrip(req *http.Request) (*http.Response, error) {
 func NewTransport(accessKey, secretKey string, options ...TransportOption) (http.RoundTripper, error) {
 	t := &transport{
 		rt: http.DefaultTransport,
-		sig: &ApiKey{
+		sig: ApiKey{ // 直接使用值类型，避免接口值拷贝问题
 			AccessKey: accessKey,
 			SecretKey: secretKey,
 		},

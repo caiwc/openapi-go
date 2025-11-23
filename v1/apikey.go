@@ -16,7 +16,7 @@ type ApiKey struct {
 	AccessKey, SecretKey string
 }
 
-func (a *ApiKey) Sign(expires time.Time, r Request) error {
+func (a ApiKey) Sign(expires time.Time, r Request) error {
 	log.Printf("first accessKey: %s, secretKey: %s \n", a.AccessKey, a.SecretKey)
 	s, err := r.StringToSign()
 	if err != nil {

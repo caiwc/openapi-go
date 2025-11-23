@@ -2,11 +2,12 @@ package openapi
 
 import (
 	"errors"
-	"github.com/easyops-cn/giraffe-micro"
-	"github.com/easyops-cn/giraffe-micro/plugins/restv2"
 	"net/http"
 	"reflect"
 	"testing"
+
+	"github.com/easyops-cn/giraffe-micro"
+	"github.com/easyops-cn/giraffe-micro/plugins/restv2"
 )
 
 type testMiddleware struct {
